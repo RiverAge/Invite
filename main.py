@@ -64,7 +64,7 @@ def ttg(url, cookie, s, r, passwd):
         link = item.xpath("..")[0].attrib["href"]
         last_reply = item.xpath("..")[0].xpath("..")[0].xpath('..')[0].xpath("..")[0].xpath("..")[0].xpath('..')[0].xpath('..')[0].xpath('./td[5]/nobr')[0].text
 
-        now = time.time()
+        now = time.time() + 3600 * 8
         past = (now -  time.mktime(time.strptime(last_reply, "%Y-%m-%d %H:%M:%S"))) / 3600
         print(past)
         if (title.find("馒头") != -1 or title.lower().find("team") != -1 ) and past <= 0.25:
@@ -85,7 +85,7 @@ def u2(url, cookie, s, r, passwd):
         link = item.attrib['href']
         last_reply = item.xpath("..")[0].xpath("..")[0].xpath('..')[0].xpath("..")[0].xpath("..")[0].xpath('./td[4]/time')[0].attrib["title"]
 
-        now = time.time()
+        now = time.time() + 3600 * 8
         past = (now -  time.mktime(time.strptime(last_reply, "%Y-%m-%d %H:%M:%S"))) / 3600
         print(past)
         if (title.find("馒头") != -1 or title.lower().find("team") != -1 ) and past <= 0.25:
