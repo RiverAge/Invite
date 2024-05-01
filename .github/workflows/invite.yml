@@ -1,11 +1,7 @@
 name:  Auto Scan
 on:
-  push:
-    branches:
-    - main
-# on:
-#   schedule:
-#     - cron: 0/15 * * * *
+  schedule:
+    - cron: 0/15 * * * *
 jobs:
   build:
     runs-on: ubuntu-latest
