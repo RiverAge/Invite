@@ -1,7 +1,11 @@
 name:  Auto Scan
 on:
-  schedule:
-    - cron: 0/15 * * * *
+  push:
+    branches:
+    - main
+# on:
+#   schedule:
+#     - cron: 0/15 * * * *
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,5 +16,6 @@ jobs:
         python-version: 'pypy3.9' 
     - run: |
         pip install lxml
-        python main.py "${{ secrets.U2_URL }}" "${{ secrets.U2_COOKIE }}" "${{ secrets.TTG_URL }}" "${{ secrets.TTG_COOKIE }}" "${{ secrets.S }}" "${{ secrets.R }}" "${{ secrets.PASSWD }}"
+        python main.py
+        # python main.py "${{ secrets.U2_URL }}" "${{ secrets.U2_COOKIE }}" "${{ secrets.TTG_URL }}" "${{ secrets.TTG_COOKIE }}" "${{ secrets.S }}" "${{ secrets.R }}" "${{ secrets.PASSWD }}"
     
