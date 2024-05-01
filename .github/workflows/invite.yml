@@ -1,7 +1,7 @@
 name:  Auto Scan
 on:
   schedule:
-    - cron: 15 * * * *
+    - cron: 0/15 * * * *
 jobs:
   build:
     runs-on: ubuntu-latest
