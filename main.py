@@ -67,7 +67,7 @@ def ttg(url, cookie, s, r, passwd):
         now = time.time() + 3600 * 8
         past = (now -  time.mktime(time.strptime(last_reply, "%Y-%m-%d %H:%M:%S"))) / 3600
         print(past)
-        if (title.find("馒头") != -1 or title.lower().find("team") != -1 ) and past <= 0.25:
+        if title.find("朱雀") != -1 and past <= 0.25:
             send_mail(title, url.split("?")[0] + link, s, r, passwd)
 
 def u2(url, cookie, s, r, passwd):
@@ -88,7 +88,7 @@ def u2(url, cookie, s, r, passwd):
         now = time.time() + 3600 * 8
         past = (now -  time.mktime(time.strptime(last_reply, "%Y-%m-%d %H:%M:%S"))) / 3600
         print(past)
-        if (title.find("馒头") != -1 or title.lower().find("team") != -1 ) and past <= 0.25:
+        if title.find("朱雀") != -1 and past <= 0.25:
             send_mail(title, url.split("?")[0] + link, s, r, passwd)
 
 def main(argv):
