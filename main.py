@@ -6,16 +6,17 @@ import smtplib
 from email.mime.text import MIMEText
 import datetime
 
+
 def send_mail(title, content, s, r, passwd):
     #设置服务器所需信息
     #163邮箱服务器地址
-    mail_host = 'smtp.163.com'  
+    mail_host = 'smtp.qq.com'  
     #163用户名
     mail_user = s  
     #密码(部分邮箱为授权码) 
     mail_pass = passwd 
     #邮件发送方邮箱地址
-    sender = s + '@163.com'  
+    sender = s + '@qq.com'  
     #邮件接受方邮箱地址，注意需要[]包裹，这意味着你可以写多个邮件地址群发
     receivers = [r]  
 
@@ -29,19 +30,14 @@ def send_mail(title, content, s, r, passwd):
     #接受方信息     
     message['To'] = receivers[0]  
 
-    try:
-        server = smtplib.SMTP_SSL(mail_host, 465) # SMTP协议默认端口是25
-        server.set_debuglevel(1)
-        #登录到服务器
-        server.login(mail_user,mail_pass) 
-        #发送
-        server.sendmail(
-            sender,receivers,message.as_string()) 
-        #退出
-        server.quit() 
-        print('success')
-    except smtplib.SMTPException as e:
-        print('error',e)
+    server = smtplib.SMTP_SSL(mail_host, 465) # SMTP协议默认端口是25
+    server.set_debuglevel(1)
+    #登录到服务器
+    server.login(mail_user,mail_pass) 
+    #发送
+    server.sendmail(sender,receivers,message.as_string()) 
+    #退出
+    server.quit() 
 
 def filterNone(item):
   if item == None:
@@ -66,8 +62,7 @@ def ttg(url, cookie, s, r, passwd):
 
         now = time.time() + 3600 * 8
         past = (now -  time.mktime(time.strptime(last_reply, "%Y-%m-%d %H:%M:%S"))) / 3600
-        print(past)
-        if title.find("朱雀") != -1 and past <= 0.25:
+        if (title.lower().find("opencd") != -1 or title.lower().find("open cd") != -1 or title.lower().find("皇后") != -1) and past <= 0.25:
             send_mail(title, url.split("?")[0] + link, s, r, passwd)
 
 def u2(url, cookie, s, r, passwd):
@@ -87,8 +82,7 @@ def u2(url, cookie, s, r, passwd):
 
         now = time.time() + 3600 * 8
         past = (now -  time.mktime(time.strptime(last_reply, "%Y-%m-%d %H:%M:%S"))) / 3600
-        print(past)
-        if title.find("朱雀") != -1 and past <= 0.25:
+        if (title.lower().find("opencd") != -1 or title.lower().find("open cd") != -1 or title.lower().find("皇后") != -1) and past <= 0.25:
             send_mail(title, url.split("?")[0] + link, s, r, passwd)
 
 def main(argv):
